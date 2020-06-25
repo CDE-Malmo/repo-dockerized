@@ -1,6 +1,14 @@
 # repo-dockerized
 Docker setup for repo tool
 
+# Using it from docker.hub
+
+```
+alias cde-repo='docker run --rm -it -v `pwd`:/workdir -v ${HOME}/.ssh:/root/.ssh -v ${HOME}/.gitconfig:/root/.gitconfig cdemalmo/cde-repo:latest'
+
+cde-repo --version
+```
+
 # What do we want to do?
 
 Few of us had trouble with making Repo tool work on our machines, so we come up with the idea to dockerize it.
