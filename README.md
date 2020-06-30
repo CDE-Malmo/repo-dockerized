@@ -1,55 +1,28 @@
 # repo-dockerized
-Docker setup for repo tool
+Docker setup for repo tool.
 
-# Using it from docker.hub
+## Why?
+So that anyone can start using Repo on their machine without messing around. 
+
+It happens that people have trouble with making Repo tool work on their machines, so we come up with the idea to dockerize it.
+A simple container that would download/or update the code accessible from the host machine. 
+
+This is also an exercise in dockerizing complex commands that require a specific environment. This concept can be used with almost any commandline tool.
+
+# How to use it
+
+## Using it from docker.hub
+
+First create an alias to start the container and run repo tool. The ENTRYPOINT is set to `[ "/mnt/bin/repo" ]`
 
 ```
 alias cde-repo='docker run --rm -it -v `pwd`:/workdir -v ${HOME}/.ssh:/root/.ssh -v ${HOME}/.gitconfig:/root/.gitconfig cdemalmo/cde-repo:latest'
-
-cde-repo --version
 ```
 
-# What do we want to do?
+Use `cde-repo --version` to make sure everything works.
 
-Few of us had trouble with making Repo tool work on our machines, so we come up with the idea to dockerize it.
-A simple container that would download/or update the code accessible from the host machine.
+From now on use `cde-repo` (the alias) whenever you want to use repo tool, e.g. to run `repo init` you call `cde-repo init`.
 
-# Use cases
-
-Being able to download and upload code at customer
-```
-repo init
-repo sync
-repo start
-repo ...
-```
-
-- It should manipulate the files on your local machine
-
-# The things
-## Alias to make it nicer
-
-```
-alias cde-repo='docker run --rm -it -v `pwd`:/workdir -v ${HOME}/.ssh:/root/.ssh -v ${HOME}/.gitconfig:/root/.gitconfig cde-repo'
-```
-
-## Run by
-
-```
-docker build --tag cde-repo:latest .
-```
-
-## Test by 
-
-```
-source alias.sh
-cde-repo init -u http://35.228.249.85/jegere
-cde-repo sync
-```
-
-*Note: you need access to the Gerrit server to be able to do this.*
-
-# To make it better
+# Possible improvements
 
 - Base this on a smaller Linux distro
-- Push to docker.hub
