@@ -1,0 +1,14 @@
+name: Docker Testing
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  my_job:
+    container: node:10.16-jessie
+
+    steps:
+      - name: die
+        run: echo "die world"
