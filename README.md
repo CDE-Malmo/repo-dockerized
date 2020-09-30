@@ -11,12 +11,12 @@ This is also an exercise in dockerizing complex commands that require a specific
 
 # How to use it
 
-## Using it from docker.hub
+*Note: You need to create a personal access token for your Github user to be able to download packages from the Github registry. Use this token to login to the Github Docker registry. Read more [here](https://docs.github.com/articles/configuring-docker-for-use-with-github-package-registry/).*
 
-First create an alias to start the container and run repo tool. The ENTRYPOINT is set to `[ "/mnt/bin/repo" ]`
+Create an alias to start the container and run repo tool. The ENTRYPOINT is set to `[ "/mnt/bin/repo" ]`
 
 ```
-alias cde-repo='docker run --rm -it -v `pwd`:/workdir -v ${HOME}/.ssh:/root/.ssh -v ${HOME}/.gitconfig:/root/.gitconfig cdemalmo/cde-repo:latest'
+alias cde-repo='docker run --rm -it -v `pwd`:/workdir -v ${HOME}/.ssh:/root/.ssh -v ${HOME}/.gitconfig:/root/.gitconfig docker.pkg.github.com/cde-malmo/repo-dockerized/cde-repo:latest'
 ```
 
 Use `cde-repo --version` to make sure everything works.
