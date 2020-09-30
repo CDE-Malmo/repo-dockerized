@@ -1,5 +1,5 @@
 # repo-dockerized
-Docker setup for repo tool.
+Docker setup for repo tool
 
 ## Why?
 So that anyone can start using Repo on their machine without messing around. 
